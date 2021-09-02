@@ -104,7 +104,7 @@ struct BinaryNumber
 			int index = digits - i - 1;
 			int digitValue = (int) pow(2,index);
 			
-			Number[index] = ((remant/digitValue)>1);
+			Number[index] = ((remant/digitValue)>=1);
 			
 			remant = remant%digitValue;
 		}
@@ -123,7 +123,6 @@ struct BinaryNumber
 	*/
 	~BinaryNumber()
 	{
-		delete[] Number;
 	}
 
 	/**
