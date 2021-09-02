@@ -95,7 +95,6 @@ class Niveau
 class QuantumSystem
 {
 	protected:
-	
 
 	class State;
 	
@@ -140,6 +139,17 @@ class QuantumSystem
 			transitionProbabilitie(p_transitionProbabilitie),
 			Id(id)
 		{}
+		
+		/**
+		* When a State changes (f.e. due to the change of a voltage in the
+		* experiment or something) the edges, or more precisely their
+		* transition rates need to change. This method handles it. (This
+		* implies, that one has to overwrite the edges to represent every
+		* transition type in the system.)
+		*
+		* @param time The current time in the system.
+		*/
+		virtual void update(double time) = 0;
 
 		/**
 		* Outputs the values held in rate as a graphml snippet to the file.
@@ -206,7 +216,7 @@ class QuantumSystem
 		* The Possible transitions from this state to other states of the
 		* system.
 		*/
-		std::vector<Edge> Edges;
+		std::vector<Edge*> Edges;
 		
 		/**
 		* The systemtime which corresponds to the last calculation of the
@@ -233,9 +243,9 @@ class QuantumSystem
 		* @param newEdges The edges encoding the transitions that are set to the
 		* state. 
 		*/
-		void storeEdges(double time,std::vector<Edge>& newEdges)
+		void storeEdges(double time,std::vector<Edge*>& newEdges)
 		{
-			for(Edge e : newEdges)
+			for(Edge* e : newEdges)
 			{
 				Edges.push_back(e);
 			}
@@ -257,7 +267,7 @@ class QuantumSystem
 		/**
 		* Returns the edges that point away from this node.
 		*/
-		std::vector<Edge>& edges()
+		std::vector<Edge*>& edges()
 		{
 			return Edges;
 		}
@@ -334,15 +344,15 @@ class QuantumSystem
 	*/
 	virtual bool actualisationNeedet(double time,State& s)=0;
 	
-	/**
-	* This method is called if actualisationNeedet evaluates to true.
-	* It should actualize the given edge.
-	*
-	* IMPORTANT NOTE: The trivial transition, i.e. the system remains in its
-	* initial state must not be added here. The Solvers or the
-	* Masterequation-generator handle it.
-	*/
-	virtual void calculateProbabilities(double time,Edge& e,State& origin) = 0;
+//	/**
+//	* This method is called if actualisationNeedet evaluates to true.
+//	* It should actualize the given edge.
+//	*
+//	* IMPORTANT NOTE: The trivial transition, i.e. the system remains in its
+//	* initial state must not be added here. The Solvers or the
+//	* Masterequation-generator handle it.
+//	*/
+//	virtual void calculateProbabilities(double time,Edge& e,State& origin) = 0;
 	
 	/**
 	* This method creates all edges and initializes their transition values. It
@@ -355,7 +365,7 @@ class QuantumSystem
 	* is used as a central internal hub for requests of the physical behaviour.
 	* It checks if the values stored should be actualized or not.
 	*/
-	std::vector<Edge> getProbabilities(double time,State& s)
+	std::vector<Edge*> getProbabilities(double time,State& s)
 	{
 		if(!s.isInitialized())
 		{
@@ -365,8 +375,8 @@ class QuantumSystem
 		{
 			if(actualisationNeedet(time,s))
 			{
-				for(Edge& e: s.edges())
-					calculateProbabilities(time,e,s);	
+				for(Edge* e: s.edges())
+					e -> update(time);
 			}
 		}
 
@@ -429,13 +439,13 @@ class QuantumSystem
 
 		getProbabilities(time,s);
 
-		std::vector<Edge>& edges = s.edges();
+		std::vector<Edge*>& edges = s.edges();
 
 		std::vector<std::pair<int,double>> toReturn;
 
-		for(Edge& e : edges)
+		for(Edge* e : edges)
 		{
-			toReturn.push_back(std::make_pair(e.targetState.number(),e.transitionProbabilitie));
+			toReturn.push_back(std::make_pair(e->targetState.number(),e->transitionProbabilitie));
 		}
 
 		return toReturn;
@@ -495,10 +505,10 @@ class QuantumSystem
 		{
 			getProbabilities(time,s);
 
-			std::vector<Edge>& edges = s.edges();
-			for(Edge& e : edges)
+			std::vector<Edge*>& edges = s.edges();
+			for(Edge* e : edges)
 			{
-				e.rate.insert({edgeDataSpecifier+timeKey,e.transitionProbabilitie});
+				e->rate.insert({edgeDataSpecifier+timeKey,e->transitionProbabilitie});
 			}
 
 			s.logOccupation(nodeDataSpecifier+timeKey,occupation[s.number()]);
@@ -529,12 +539,12 @@ class QuantumSystem
 
 			double pGo = 0;
 
-			std::vector<Edge>& edges = s.edges();
+			std::vector<Edge*>& edges = s.edges();
 			
-			for(Edge& e : edges)
+			for(Edge* e : edges)
 			{
-				W(s.number(),e.targetState.number()) = e.transitionProbabilitie;
-				pGo -= e.transitionProbabilitie;
+				W(s.number(),e->targetState.number()) = e->transitionProbabilitie;
+				pGo -= e->transitionProbabilitie;
 
 			}
 
@@ -575,16 +585,15 @@ class QuantumSystem
 			file << '\t' << "<key attr.name=\""<< edgeKeySpecifier << t;
 			file << "\" attr.type=\"float\" for=\"edge\" id=\"";
 			file << edgeDataSpecifier << t << "\"/> \n";
-
 		}
 					
 		file << "<graph edgedefault=\"directed\">\n";
 		for(State& s : allStates)
 		{
 			s.writeToFile(file,1);
-			for(Edge& e: s.edges())
+			for(Edge* e: s.edges())
 			{
-				e.writeToFile(file,2,s.number());
+				e->writeToFile(file,2,s.number());
 			}
 		}
 

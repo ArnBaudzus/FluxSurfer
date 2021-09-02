@@ -19,15 +19,38 @@ class TestSystem : public QuantumSystem
 	{
 		return false; //Constant Probabilities
 	}
-
-	void calculateProbabilities(double time,Edge& e,State& origin) override
+	
+	class TunnelEdge : public Edge
 	{
-		e.transitionProbabilitie = 0.2;
-	}
+		protected:
+
+		virtual void update(double time) override
+		{
+			//Just do Nothing
+		}
+
+		public:
+
+		TunnelEdge(
+			State& p_targetState,
+			double p_transitionProbabilitie,
+			std::string id
+		):
+		Edge(p_targetState,p_transitionProbabilitie,id)
+		{
+			
+		}
+
+	};
+
+//	void calculateProbabilities(double time,Edge& e,State& origin) override
+//	{
+//		e.transitionProbabilitie = 0.2;
+///	}
 
 	void createEdges(double time, State& origin) override
 	{
-		std::vector<Edge> newEdges;
+		std::vector<Edge*> newEdges;
 
 		for(State& s: allStates)
 		{
@@ -37,7 +60,7 @@ class TestSystem : public QuantumSystem
 			}
 			else
 			{
-				newEdges.push_back(Edge(s,0.2,"Tunneling"));
+				newEdges.push_back(new TunnelEdge(s,0.2,"Tunneling"));
 			}
 		}
 

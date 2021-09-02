@@ -16,11 +16,6 @@ class TwoLevelSystem : QuantumSystem
 		return false;
 	}
 
-	void calculateProbabilities(double time,Edge& e,State& origin) override
-	{
-		
-	}
-
 	void addTunnelEdges(double time,State& Origin, std::vector<Edge> & edges)
 	{
 	
