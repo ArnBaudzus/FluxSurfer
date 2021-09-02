@@ -3,6 +3,7 @@
 #include<vector>
 #include<utility>
 #include<fstream>
+#include<cmath>
 
 /**
 * In this unoverwritten state this class mainly exists for the user. It holds
@@ -87,11 +88,27 @@ struct BinaryNumber
 	/**
 	* @param digits The number of digits the new binary number has.
 	*/
-	BinaryNumber(int digits)
+	BinaryNumber(int digits, int value = 0)
 	:
 		Number(new bool[digits]),
 		NumberOfDigits(digits)
-	{}
+	{
+		
+		int remant = value;
+
+		for(int i = 0;i < digits;i++)
+		{
+			if(remant == 0)
+				break;
+
+			int index = digits - i - 1;
+			int digitValue = (int) pow(2,index);
+			
+			Number[index] = ((remant/digitValue)>1);
+			
+			remant = remant%digitValue;
+		}
+	}
 	
 	/**
 	* @param toCopy The memeber variables of the new binary number have the same
@@ -106,7 +123,7 @@ struct BinaryNumber
 	*/
 	~BinaryNumber()
 	{
-		delete* Number;
+		delete[] Number;
 	}
 
 	/**
@@ -159,11 +176,11 @@ struct BinaryNumber
 	* @param digit The index of the bit that is set.
 	* @param value The new value of the bit.
 	*/
-	BinaryNumber setBit(int digit,bool value)
+	void setBit(int digit,bool value)
 	{
 		Number[digit] = value;
 	}
-}
+};
 
 /**
 * This Class represents a Quantumsystem with discrete finite states. It
@@ -318,7 +335,7 @@ class QuantumSystem
 		* the levels array in the quantum system is occupied in this state. This
 		* variable can be used to identify states for some specific transitions.
 		*/
-		BinaryNumber OccupiedLevels
+		BinaryNumber OccupiedLevels;
 
 		/**
 		* The Possible transitions from this state to other states of the
@@ -336,9 +353,11 @@ class QuantumSystem
 		
 		State(
 			int p_stateNumber,
-			double initialTime
+			double initialTime,
+			int numberOfLevels
 		):
 			StateNumber(p_stateNumber),
+			OccupiedLevels(BinaryNumber(numberOfLevels,p_stateNumber)),
 			LastActualisation(initialTime)
 		{}
 		
@@ -522,7 +541,7 @@ class QuantumSystem
 
 		for(int stateNum =0; stateNum< numberOfStates;stateNum++)
 		{
-			allStates.push_back(State(stateNum,initialTime));
+			allStates.push_back(State(stateNum,initialTime,niveaus.size()));
 		}
 	}
 
