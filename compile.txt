@@ -1,0 +1,1 @@
+g++ bootstrap_code/experiment2_Parallelisation.cpp -larmadillo -lpthread -ljsoncpp -I code -o build/test.out
