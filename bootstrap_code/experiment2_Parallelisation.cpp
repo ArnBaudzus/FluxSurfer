@@ -43,11 +43,6 @@ class TestSystem : public QuantumSystem
 
 	};
 
-//	void calculateProbabilities(double time,Edge& e,State& origin) override
-//	{
-//		e.transitionProbabilitie = 0.2;
-///	}
-
 	void createEdges(double time, State& origin) override
 	{
 		std::vector<Edge*> newEdges;
@@ -65,7 +60,6 @@ class TestSystem : public QuantumSystem
 		}
 
 		origin.storeEdges(time,newEdges);
-
 	}
 
 	public:
