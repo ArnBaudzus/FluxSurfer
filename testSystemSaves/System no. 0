@@ -117,16 +117,16 @@
 		</edge>
 	<node id="2">
 		<data key="Occupation_@_0.000000">0</data>
-		<data key="Occupation_@_0.100000">0.092219</data>
-		<data key="Occupation_@_0.200000">0.168609</data>
-		<data key="Occupation_@_0.300000">0.231626</data>
-		<data key="Occupation_@_0.400000">0.284341</data>
-		<data key="Occupation_@_0.500000">0.324492</data>
-		<data key="Occupation_@_0.600000">0.35739</data>
-		<data key="Occupation_@_0.700000">0.384544</data>
-		<data key="Occupation_@_0.800000">0.407466</data>
-		<data key="Occupation_@_0.900000">0.424654</data>
-		<data key="Occupation_@_1.000000">0.438595</data>
+		<data key="Occupation_@_0.100000">9.24436e-26</data>
+		<data key="Occupation_@_0.200000">1.69019e-25</data>
+		<data key="Occupation_@_0.300000">2.3219e-25</data>
+		<data key="Occupation_@_0.400000">2.85033e-25</data>
+		<data key="Occupation_@_0.500000">3.25282e-25</data>
+		<data key="Occupation_@_0.600000">3.58261e-25</data>
+		<data key="Occupation_@_0.700000">3.85481e-25</data>
+		<data key="Occupation_@_0.800000">4.08458e-25</data>
+		<data key="Occupation_@_0.900000">4.25688e-25</data>
+		<data key="Occupation_@_1.000000">4.39663e-25</data>
 	</node>
 		<edge id="Tunneling In" source="2" target="3">
 			<data key="Wheights_@_0.000000">0.5</data>
@@ -156,16 +156,16 @@
 		</edge>
 	<node id="3">
 		<data key="Occupation_@_0.000000">0</data>
-		<data key="Occupation_@_0.100000">0.00380609</data>
-		<data key="Occupation_@_0.200000">0.0149198</data>
-		<data key="Occupation_@_0.300000">0.0315412</data>
-		<data key="Occupation_@_0.400000">0.0518507</data>
-		<data key="Occupation_@_0.500000">0.0757513</data>
-		<data key="Occupation_@_0.600000">0.100926</data>
-		<data key="Occupation_@_0.700000">0.126642</data>
-		<data key="Occupation_@_0.800000">0.152422</data>
-		<data key="Occupation_@_0.900000">0.17765</data>
-		<data key="Occupation_@_1.000000">0.201961</data>
+		<data key="Occupation_@_0.100000">3.81535e-27</data>
+		<data key="Occupation_@_0.200000">1.49561e-26</data>
+		<data key="Occupation_@_0.300000">3.1618e-26</data>
+		<data key="Occupation_@_0.400000">5.19769e-26</data>
+		<data key="Occupation_@_0.500000">7.59358e-26</data>
+		<data key="Occupation_@_0.600000">1.01172e-25</data>
+		<data key="Occupation_@_0.700000">1.2695e-25</data>
+		<data key="Occupation_@_0.800000">1.52793e-25</data>
+		<data key="Occupation_@_0.900000">1.78082e-25</data>
+		<data key="Occupation_@_1.000000">2.02452e-25</data>
 	</node>
 		<edge id="Tunneling Out" source="3" target="2">
 			<data key="Wheights_@_0.000000">0.5</data>

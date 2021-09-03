@@ -680,7 +680,7 @@ class QuantumSystem
 			
 			for(Edge* e : edges)
 			{
-				W(s.number(),e->targetState.number()) = e->transitionProbabilitie;
+				W(e->targetState.number(),s.number()) = e->transitionProbabilitie;
 				pGo -= e->transitionProbabilitie;
 
 			}
