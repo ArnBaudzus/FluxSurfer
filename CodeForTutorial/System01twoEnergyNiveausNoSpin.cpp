@@ -4,6 +4,8 @@
 #include <ode_solvers.cpp>
 //#include<wanderer_code.cpp>
 #include<parallel_processing_code.cpp>
+#include<physicalFormulas.cpp>
+
 
 using namespace std;
 
@@ -11,7 +13,7 @@ using namespace std;
 * A Simple Quantumsystem that describes two Energy-niveaus that are in
 * equilibirum with a larger classical system.
 */
-class TwoNiveauSystem : public QuantumSystem
+class TwoLevelSystem : public QuantumSystem
 {
 	protected:
 
@@ -48,37 +50,55 @@ class TwoNiveauSystem : public QuantumSystem
 	
 	void createTunnelEdges(double time,State& origin)
 	{
-		
-	}
-
-	void createEdges(double time, State& origin) override
-	{
 		std::vector<Edge*> newEdges;
 
-		for(State& s: allStates)
+		BinaryNumber OriginOccupation = origin.occupiedLevels();
+		
+
+		for(int i = 0;i < Niveaus.size(); i++)
 		{
-			if(s.number() == origin.number())
+			BinaryNumber indexTargetState = OriginOccupation.bitFlip(i);
+			
+			double probability = 0.2;
+			std::string label = "";
+
+			if(indexTargetState.readBit(i) == false)
 			{
-				continue;
+				// Tunneling out
+				label = "Tunneling Out";
+				probability = 1-fermi(Niveaus[i].energy(),
+									  BackContactVoltage,
+									  Temperature);
 			}
 			else
 			{
-				newEdges.push_back(new TunnelEdge(s,0.2,"Tunneling"));
+				//Tunneling in
+				label = "Tunneling In";
+				probability =	fermi(Niveaus[i].energy(),
+									  BackContactVoltage,
+									  Temperature);
 			}
+			
+			newEdges.push_back(new TunnelEdge(allStates[indexTargetState.asDecimal()],probability,label));
 		}
 
 		origin.storeEdges(time,newEdges);
 	}
 
+	void createEdges(double time, State& origin) override
+	{
+		createTunnelEdges(time,origin);
+	}
+
 	public:
 
-	TwoNiveauSystem(
+	TwoLevelSystem(
 		double initialTime,
 		std::string path,
 		double p_Temperature,
 		double p_BackContactVoltage
 	):
-		QuantumSystem({Niveau("Level2",20e-3,0.5),Niveau("Level1",40e-3,0.5)},initialTime,path),
+		QuantumSystem({Niveau("Level2",20e-3*e_minus,0.5),Niveau("Level1",40e-3*e_minus,0.5)},initialTime,path),
 		Temperature(p_Temperature),
 		BackContactVoltage(p_BackContactVoltage)
 	{}
@@ -107,7 +127,10 @@ class TestExperiment : public Experiment
 		std::vector<std::string>,
 		std::pair<QuantumSystem*,Solver*>> NextMeasurement() override
 	{
-		TestSystem* T = new TestSystem(0,"testSystemSaves/System no. "+std::to_string(SystemsDeployed));
+		TwoLevelSystem* T = new TwoLevelSystem(0,
+											   "testSystemSaves/System no. "+std::to_string(SystemsDeployed),
+											   4.2,
+											   20e-3);
 		
 		std::vector<double> keyFrames;
 		
@@ -149,7 +172,7 @@ int main()
 {
 	
 
-	TestExperiment test(10,4);
+	TestExperiment test(10,1);
 	test.Conduct();
 	
 	return 0;

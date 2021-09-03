@@ -2,14 +2,14 @@
 
 <SystemInformation>
 	<niveau>
-		<name> s2</name>
-		<energy_in_eV> s2</energy_in_eV>
+		<name> Level2</name>
+		<energy_in_eV> 3.20435e-21</energy_in_eV>
 		<Spin> 0.5</Spin>
 	</niveau>
 	<niveau>
-		<name> s1</name>
-		<energy_in_eV> s1</energy_in_eV>
-		<Spin> -0.5</Spin>
+		<name> Level1</name>
+		<energy_in_eV> 6.40871e-21</energy_in_eV>
+		<Spin> 0.5</Spin>
 	</niveau>
 </SystemInformation>
 
@@ -39,211 +39,159 @@
 <graph edgedefault="directed">
 	<node id="0">
 		<data key="Occupation_@_6.000000">1</data>
-		<data key="Occupation_@_6.100000">0.941916</data>
-		<data key="Occupation_@_6.200000">0.887984</data>
-		<data key="Occupation_@_6.300000">0.83795</data>
-		<data key="Occupation_@_6.400000">0.79125</data>
-		<data key="Occupation_@_6.500000">0.749169</data>
-		<data key="Occupation_@_6.600000">0.710251</data>
-		<data key="Occupation_@_6.700000">0.674137</data>
-		<data key="Occupation_@_6.800000">0.640306</data>
-		<data key="Occupation_@_6.900000">0.60999</data>
-		<data key="Occupation_@_7.000000">0.582074</data>
+		<data key="Occupation_@_6.100000">0.951987</data>
+		<data key="Occupation_@_6.200000">0.908236</data>
+		<data key="Occupation_@_6.300000">0.868417</data>
+		<data key="Occupation_@_6.400000">0.831904</data>
+		<data key="Occupation_@_6.500000">0.799878</data>
+		<data key="Occupation_@_6.600000">0.770842</data>
+		<data key="Occupation_@_6.700000">0.744407</data>
+		<data key="Occupation_@_6.800000">0.720056</data>
+		<data key="Occupation_@_6.900000">0.698848</data>
+		<data key="Occupation_@_7.000000">0.679722</data>
 	</node>
-		<edge id="Tunneling" source="0" target="1">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling In" source="0" target="1">
+			<data key="Wheights_@_6.000000">0.5</data>
+			<data key="Wheights_@_6.100000">0.5</data>
+			<data key="Wheights_@_6.200000">0.5</data>
+			<data key="Wheights_@_6.300000">0.5</data>
+			<data key="Wheights_@_6.400000">0.5</data>
+			<data key="Wheights_@_6.500000">0.5</data>
+			<data key="Wheights_@_6.600000">0.5</data>
+			<data key="Wheights_@_6.700000">0.5</data>
+			<data key="Wheights_@_6.800000">0.5</data>
+			<data key="Wheights_@_6.900000">0.5</data>
+			<data key="Wheights_@_7.000000">0.5</data>
 		</edge>
-		<edge id="Tunneling" source="0" target="2">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
-		</edge>
-		<edge id="Tunneling" source="0" target="3">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling In" source="0" target="2">
+			<data key="Wheights_@_6.000000">1.00244e-24</data>
+			<data key="Wheights_@_6.100000">1.00244e-24</data>
+			<data key="Wheights_@_6.200000">1.00244e-24</data>
+			<data key="Wheights_@_6.300000">1.00244e-24</data>
+			<data key="Wheights_@_6.400000">1.00244e-24</data>
+			<data key="Wheights_@_6.500000">1.00244e-24</data>
+			<data key="Wheights_@_6.600000">1.00244e-24</data>
+			<data key="Wheights_@_6.700000">1.00244e-24</data>
+			<data key="Wheights_@_6.800000">1.00244e-24</data>
+			<data key="Wheights_@_6.900000">1.00244e-24</data>
+			<data key="Wheights_@_7.000000">1.00244e-24</data>
 		</edge>
 	<node id="1">
 		<data key="Occupation_@_6.000000">0</data>
-		<data key="Occupation_@_6.100000">0.0193613</data>
-		<data key="Occupation_@_6.200000">0.0373388</data>
-		<data key="Occupation_@_6.300000">0.0540168</data>
-		<data key="Occupation_@_6.400000">0.0695833</data>
-		<data key="Occupation_@_6.500000">0.0836104</data>
-		<data key="Occupation_@_6.600000">0.096583</data>
-		<data key="Occupation_@_6.700000">0.108621</data>
-		<data key="Occupation_@_6.800000">0.119898</data>
-		<data key="Occupation_@_6.900000">0.130003</data>
-		<data key="Occupation_@_7.000000">0.139309</data>
+		<data key="Occupation_@_6.100000">0.0480126</data>
+		<data key="Occupation_@_6.200000">0.0917642</data>
+		<data key="Occupation_@_6.300000">0.131583</data>
+		<data key="Occupation_@_6.400000">0.168096</data>
+		<data key="Occupation_@_6.500000">0.200122</data>
+		<data key="Occupation_@_6.600000">0.229158</data>
+		<data key="Occupation_@_6.700000">0.255593</data>
+		<data key="Occupation_@_6.800000">0.279944</data>
+		<data key="Occupation_@_6.900000">0.301152</data>
+		<data key="Occupation_@_7.000000">0.320278</data>
 	</node>
-		<edge id="Tunneling" source="1" target="0">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling Out" source="1" target="0">
+			<data key="Wheights_@_6.000000">0.5</data>
+			<data key="Wheights_@_6.100000">0.5</data>
+			<data key="Wheights_@_6.200000">0.5</data>
+			<data key="Wheights_@_6.300000">0.5</data>
+			<data key="Wheights_@_6.400000">0.5</data>
+			<data key="Wheights_@_6.500000">0.5</data>
+			<data key="Wheights_@_6.600000">0.5</data>
+			<data key="Wheights_@_6.700000">0.5</data>
+			<data key="Wheights_@_6.800000">0.5</data>
+			<data key="Wheights_@_6.900000">0.5</data>
+			<data key="Wheights_@_7.000000">0.5</data>
 		</edge>
-		<edge id="Tunneling" source="1" target="2">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
-		</edge>
-		<edge id="Tunneling" source="1" target="3">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling In" source="1" target="3">
+			<data key="Wheights_@_6.000000">1.00244e-24</data>
+			<data key="Wheights_@_6.100000">1.00244e-24</data>
+			<data key="Wheights_@_6.200000">1.00244e-24</data>
+			<data key="Wheights_@_6.300000">1.00244e-24</data>
+			<data key="Wheights_@_6.400000">1.00244e-24</data>
+			<data key="Wheights_@_6.500000">1.00244e-24</data>
+			<data key="Wheights_@_6.600000">1.00244e-24</data>
+			<data key="Wheights_@_6.700000">1.00244e-24</data>
+			<data key="Wheights_@_6.800000">1.00244e-24</data>
+			<data key="Wheights_@_6.900000">1.00244e-24</data>
+			<data key="Wheights_@_7.000000">1.00244e-24</data>
 		</edge>
 	<node id="2">
 		<data key="Occupation_@_6.000000">0</data>
-		<data key="Occupation_@_6.100000">0.0193613</data>
-		<data key="Occupation_@_6.200000">0.0373388</data>
-		<data key="Occupation_@_6.300000">0.0540168</data>
-		<data key="Occupation_@_6.400000">0.0695833</data>
-		<data key="Occupation_@_6.500000">0.0836104</data>
-		<data key="Occupation_@_6.600000">0.096583</data>
-		<data key="Occupation_@_6.700000">0.108621</data>
-		<data key="Occupation_@_6.800000">0.119898</data>
-		<data key="Occupation_@_6.900000">0.130003</data>
-		<data key="Occupation_@_7.000000">0.139309</data>
+		<data key="Occupation_@_6.100000">0.092219</data>
+		<data key="Occupation_@_6.200000">0.168609</data>
+		<data key="Occupation_@_6.300000">0.231626</data>
+		<data key="Occupation_@_6.400000">0.284341</data>
+		<data key="Occupation_@_6.500000">0.324492</data>
+		<data key="Occupation_@_6.600000">0.35739</data>
+		<data key="Occupation_@_6.700000">0.384544</data>
+		<data key="Occupation_@_6.800000">0.407466</data>
+		<data key="Occupation_@_6.900000">0.424654</data>
+		<data key="Occupation_@_7.000000">0.438595</data>
 	</node>
-		<edge id="Tunneling" source="2" target="0">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling In" source="2" target="3">
+			<data key="Wheights_@_6.000000">0.5</data>
+			<data key="Wheights_@_6.100000">0.5</data>
+			<data key="Wheights_@_6.200000">0.5</data>
+			<data key="Wheights_@_6.300000">0.5</data>
+			<data key="Wheights_@_6.400000">0.5</data>
+			<data key="Wheights_@_6.500000">0.5</data>
+			<data key="Wheights_@_6.600000">0.5</data>
+			<data key="Wheights_@_6.700000">0.5</data>
+			<data key="Wheights_@_6.800000">0.5</data>
+			<data key="Wheights_@_6.900000">0.5</data>
+			<data key="Wheights_@_7.000000">0.5</data>
 		</edge>
-		<edge id="Tunneling" source="2" target="1">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
-		</edge>
-		<edge id="Tunneling" source="2" target="3">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling Out" source="2" target="0">
+			<data key="Wheights_@_6.000000">1</data>
+			<data key="Wheights_@_6.100000">1</data>
+			<data key="Wheights_@_6.200000">1</data>
+			<data key="Wheights_@_6.300000">1</data>
+			<data key="Wheights_@_6.400000">1</data>
+			<data key="Wheights_@_6.500000">1</data>
+			<data key="Wheights_@_6.600000">1</data>
+			<data key="Wheights_@_6.700000">1</data>
+			<data key="Wheights_@_6.800000">1</data>
+			<data key="Wheights_@_6.900000">1</data>
+			<data key="Wheights_@_7.000000">1</data>
 		</edge>
 	<node id="3">
 		<data key="Occupation_@_6.000000">0</data>
-		<data key="Occupation_@_6.100000">0.0193613</data>
-		<data key="Occupation_@_6.200000">0.0373388</data>
-		<data key="Occupation_@_6.300000">0.0540168</data>
-		<data key="Occupation_@_6.400000">0.0695833</data>
-		<data key="Occupation_@_6.500000">0.0836104</data>
-		<data key="Occupation_@_6.600000">0.096583</data>
-		<data key="Occupation_@_6.700000">0.108621</data>
-		<data key="Occupation_@_6.800000">0.119898</data>
-		<data key="Occupation_@_6.900000">0.130003</data>
-		<data key="Occupation_@_7.000000">0.139309</data>
+		<data key="Occupation_@_6.100000">0.00380609</data>
+		<data key="Occupation_@_6.200000">0.0149198</data>
+		<data key="Occupation_@_6.300000">0.0315412</data>
+		<data key="Occupation_@_6.400000">0.0518507</data>
+		<data key="Occupation_@_6.500000">0.0757513</data>
+		<data key="Occupation_@_6.600000">0.100926</data>
+		<data key="Occupation_@_6.700000">0.126642</data>
+		<data key="Occupation_@_6.800000">0.152422</data>
+		<data key="Occupation_@_6.900000">0.17765</data>
+		<data key="Occupation_@_7.000000">0.201961</data>
 	</node>
-		<edge id="Tunneling" source="3" target="0">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling Out" source="3" target="2">
+			<data key="Wheights_@_6.000000">0.5</data>
+			<data key="Wheights_@_6.100000">0.5</data>
+			<data key="Wheights_@_6.200000">0.5</data>
+			<data key="Wheights_@_6.300000">0.5</data>
+			<data key="Wheights_@_6.400000">0.5</data>
+			<data key="Wheights_@_6.500000">0.5</data>
+			<data key="Wheights_@_6.600000">0.5</data>
+			<data key="Wheights_@_6.700000">0.5</data>
+			<data key="Wheights_@_6.800000">0.5</data>
+			<data key="Wheights_@_6.900000">0.5</data>
+			<data key="Wheights_@_7.000000">0.5</data>
 		</edge>
-		<edge id="Tunneling" source="3" target="1">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
-		</edge>
-		<edge id="Tunneling" source="3" target="2">
-			<data key="Wheights_@_6.000000">0.2</data>
-			<data key="Wheights_@_6.100000">0.2</data>
-			<data key="Wheights_@_6.200000">0.2</data>
-			<data key="Wheights_@_6.300000">0.2</data>
-			<data key="Wheights_@_6.400000">0.2</data>
-			<data key="Wheights_@_6.500000">0.2</data>
-			<data key="Wheights_@_6.600000">0.2</data>
-			<data key="Wheights_@_6.700000">0.2</data>
-			<data key="Wheights_@_6.800000">0.2</data>
-			<data key="Wheights_@_6.900000">0.2</data>
-			<data key="Wheights_@_7.000000">0.2</data>
+		<edge id="Tunneling Out" source="3" target="1">
+			<data key="Wheights_@_6.000000">1</data>
+			<data key="Wheights_@_6.100000">1</data>
+			<data key="Wheights_@_6.200000">1</data>
+			<data key="Wheights_@_6.300000">1</data>
+			<data key="Wheights_@_6.400000">1</data>
+			<data key="Wheights_@_6.500000">1</data>
+			<data key="Wheights_@_6.600000">1</data>
+			<data key="Wheights_@_6.700000">1</data>
+			<data key="Wheights_@_6.800000">1</data>
+			<data key="Wheights_@_6.900000">1</data>
+			<data key="Wheights_@_7.000000">1</data>
 		</edge>
 </graph>
 </graphml>

@@ -49,6 +49,21 @@ class Niveau
 		Energy(energy),
 		Spin(spin)
 	{}
+
+	std::string name()
+	{
+		return Name;
+	}
+
+	double spin()
+	{
+		return Spin;
+	}
+
+	double energy()
+	{
+		return Energy;
+	}
 	
 	/**
 	* Writes the data that is held by this class as xml.
@@ -58,7 +73,7 @@ class Niveau
 		file << indent << "<niveau>\n";
 		
 		file << indent << "\t<name> " << Name << "</name>\n";
-		file << indent << "\t<energy_in_eV> " << Name << "</energy_in_eV>\n";
+		file << indent << "\t<energy_in_eV> " << Energy << "</energy_in_eV>\n";
 		file << indent << "\t<Spin> " << Spin << "</Spin>\n";
 		
 		file << indent << "</niveau>\n";
@@ -98,10 +113,14 @@ struct BinaryNumber
 
 		for(int i = 0;i < digits;i++)
 		{
-			if(remant == 0)
-				break;
-
 			int index = digits - i - 1;
+
+			if(remant == 0)
+			{
+				Number[index] = 0;
+				continue;
+			}
+
 			int digitValue = (int) pow(2,index);
 			
 			Number[index] = ((remant/digitValue)>=1);
@@ -110,14 +129,6 @@ struct BinaryNumber
 		}
 	}
 	
-	/**
-	* @param toCopy The memeber variables of the new binary number have the same
-	* value than the ones in toCopy.
-	*/
-	BinaryNumber(BinaryNumber* toCopy)
-	:Number(toCopy->Number),NumberOfDigits(toCopy->NumberOfDigits)
-	{}
-
 	/**
 	* Frees the Array for the binary representation.
 	*/
@@ -151,10 +162,11 @@ struct BinaryNumber
 	*/
 	BinaryNumber bitFlip(int digit)
 	{
-		Number[digit] = !Number[digit];
-		BinaryNumber toReturn = BinaryNumber(this);
-		Number[digit] = !Number[digit];
 
+		Number[digit] = !Number[digit];
+		BinaryNumber toReturn = BinaryNumber(NumberOfDigits,asDecimal());
+		Number[digit] = !Number[digit];
+		
 		return toReturn;
 	}
 	
@@ -164,7 +176,7 @@ struct BinaryNumber
 	* @param digit The digit that should be returned, i.e. the place in the
 	* binary string.
 	*/
-	bool bitReadout(int digit)
+	bool readBit(int digit)
 	{
 		return Number[digit];
 	}
