@@ -372,6 +372,14 @@ class QuantumSystem
 			LastActualisation(initialTime)
 		{}
 		
+		~State()
+		{
+			for(Edge* e : Edges)
+			{
+				delete e;
+			}
+		}
+
 		/**
 		* This method is used by the QuantumSystem to store the calculated edges
 		* on actualisation of this node.
@@ -554,6 +562,11 @@ class QuantumSystem
 		{
 			allStates.push_back(State(stateNum,initialTime,niveaus.size()));
 		}
+	}
+	
+	virtual ~QuantumSystem()
+	{
+		
 	}
 
 	/**

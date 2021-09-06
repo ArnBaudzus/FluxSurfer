@@ -212,7 +212,7 @@ int main()
 
 	double minVoltage = 0;//V
 	double maxVoltage = 60e-3;//V
-	int numVoltageValues = 100;
+	int numVoltageValues = 300;
 	
 	for(int i = 0;i<numVoltageValues;i++)
 	{
