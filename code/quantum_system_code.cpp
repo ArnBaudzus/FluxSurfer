@@ -703,6 +703,8 @@ class QuantumSystem
 		
 		file << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n";
 		
+		file << "<RunData>\n";
+		
 		file << "<SystemInformation>\n";
 		for(Niveau & n : Niveaus)
 		{
@@ -735,7 +737,8 @@ class QuantumSystem
 		}
 
 		file << "</graph>\n";
-		file << "</graphml>";
+		file << "</graphml>\n";
+		file << "</RunData>";
 		
 		file.close();
 	}
