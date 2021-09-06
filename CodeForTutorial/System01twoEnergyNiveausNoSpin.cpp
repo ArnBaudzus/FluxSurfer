@@ -110,7 +110,7 @@ class TestExperiment : public Experiment
 	protected:
 	//Initialisation Data
 	double p_init_time = 0;
-	double p_end_time = 1;
+	double p_end_time = 10;
 	std::vector<double> initial_occupation={1,0,0,0};
 	
 	SingleStepScheme* scheme = new EulerForward();
