@@ -105,12 +105,16 @@ class TwoLevelSystem : public QuantumSystem
 	
 };
 
-class TestExperiment : public Experiment
+class TunnelExperiment : public Experiment
 {
 	protected:
+	std::vector<double> TemperatureValues;
+	std::vector<double> VoltageValues;
+
 	//Initialisation Data
 	double p_init_time = 0;
 	double p_end_time = 10;
+	int timeSteps = 1000;
 	std::vector<double> initial_occupation={1,0,0,0};
 	
 	SingleStepScheme* scheme = new EulerForward();
@@ -123,57 +127,104 @@ class TestExperiment : public Experiment
 		return (NumberOfSystems - SystemsDeployed);
 	}
 
+	int VoltageIndex = 0;
+	int TemperatureIndex = 0;
+
 	std::pair<
 		std::vector<std::string>,
 		std::pair<QuantumSystem*,Solver*>> NextMeasurement() override
 	{
-		TwoLevelSystem* T = new TwoLevelSystem(0,
-											   "testSystemSaves/System no. "+std::to_string(SystemsDeployed),
-											   4.2,
-											   20e-3);
+		//Generating the System
 		
+		double Temperature = TemperatureValues[TemperatureIndex];
+		double BCVoltage = VoltageValues[VoltageIndex]; 
+
+		std::string simulationIndex = std::to_string(SystemsDeployed);
+		
+		while(simulationIndex.length() < 6)
+		{
+			simulationIndex = '0' + simulationIndex;
+		}
+
+		TwoLevelSystem* T = new TwoLevelSystem(0,
+											   "TunnelExperimentSaves/"+
+												simulationIndex+
+											   "_VBC="+
+												std::to_string(BCVoltage)+
+												"_T="+
+												std::to_string(Temperature)+
+												".xml",
+												Temperature,
+												BCVoltage);
+		
+		//Setting up the Solver
 		std::vector<double> keyFrames;
 		
-		for(int i = 0;i<10;i++)
+		for(int i = 0;i<timeSteps;i++)
 		{
-			keyFrames.push_back(SystemsDeployed+((double)i/10.0));
+			keyFrames.push_back(p_init_time+(p_end_time*((double)i/(double)timeSteps)));
 		}
-		keyFrames.push_back(SystemsDeployed+1);
+		keyFrames.push_back(p_end_time);
 
 		Solver* adaptiv = new RichardsonSolver(keyFrames,initial_occupation,T,scheme,1e-3,1e-2);
+		
+		//finalizing
 		SystemsDeployed ++;
+		VoltageIndex ++;
+		if(VoltageIndex >= VoltageValues.size())
+		{
+			VoltageIndex = 0;
+			TemperatureIndex ++;
+		}
 
 		auto job = std::make_pair(T,adaptiv);
 		
 		std::vector<std::string> attributes;
-		attributes.push_back(std::to_string(SystemsDeployed-1));
-		
+		attributes.push_back(std::to_string(BCVoltage));
+		attributes.push_back(std::to_string(Temperature));
+
 		return make_pair(attributes,job);
 	}
 
 	public:
 
-	TestExperiment
+	TunnelExperiment
 	(
-		int pNumberOfSystems,
+		std::vector<double> pTemperatureValues,
+		std::vector<double> pVoltageValues,
 		int pNumberThreads
 	):
-	Experiment(pNumberThreads,pNumberOfSystems,
-				"testSystemSaves",{"MeasurementNumber"},
-				{{"T/K","4.2"},{"B/T","3"},{"Mensa@11:30am?","true"}},
-				"A Test Experiment with similar measurements of a quantumsystem with identical transition probabilities",
-				"The Aim is to see if the code is working as expected."),
-	NumberOfSystems(pNumberOfSystems)
+	Experiment(pNumberThreads,pTemperatureValues.size() * pVoltageValues.size(),
+				"TunnelExperimentSaves",{"Back Contact Voltage / V","Temperature / K"},
+				{},
+				"The tunneling from a 2DEG into a 2 Niveau System without spin is simulated. Coulomb interaction, exchange interaction, relaxation and spinflip are neglected. The only way changes in the system state can be introduced is via tunnelling processes over the 2DEG.",
+				"This is a Demo project, the main goal is to get warm with the library and the post processors."),
+	TemperatureValues(pTemperatureValues),
+	VoltageValues(pVoltageValues),
+	NumberOfSystems(pTemperatureValues.size() * pVoltageValues.size())
 	{}
 	
 };
 
 int main()
 {
-	
+	std::vector<double> Voltages;
 
-	TestExperiment test(10,1);
-	test.Conduct();
+	double minVoltage = 0;//V
+	double maxVoltage = 60e-3;//V
+	int numVoltageValues = 100;
+	
+	for(int i = 0;i<numVoltageValues;i++)
+	{
+		Voltages.push_back(minVoltage + ((maxVoltage)*((double)i/(double)numVoltageValues)));
+	}
+
+	TunnelExperiment experiment(
+								{1,4.2,20,30,60,120,300},// Temperatures/K
+								Voltages,// Voltages/V
+								4  // Worker Threads
+								);
+	experiment.Conduct();
 	
 	return 0;
 }
