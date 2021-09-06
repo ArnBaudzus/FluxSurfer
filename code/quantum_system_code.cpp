@@ -705,14 +705,14 @@ class QuantumSystem
 		
 		file << "<RunData>\n";
 		
-		file << "<SystemInformation>\n";
+		file << "<SystemInformation xmlns=\"SystemInfo\">\n";
 		for(Niveau & n : Niveaus)
 		{
 			n.writeToFile(file,"\t");
 		}
 		file << "</SystemInformation>\n\n";
 
-		file << "<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\">\n";
+		file << "<graphml xmlns=\"GraphInfo\">\n";
 		
 		for(std::string t : saveTimeKeys)
 		{
