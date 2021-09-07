@@ -1,0 +1,10 @@
+{
+	"Description" : "A Test Experiment with similar measurements of a quantumsystem with identical transition probabilities",
+	"Motivation" : "The Aim is to see if the code is working as expected.",
+	"SystemConstants" : 
+	{
+		"B/T" : "3",
+		"Mensa@11:30am?" : "true",
+		"T/K" : "4.2"
+	}
+}
