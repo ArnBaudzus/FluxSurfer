@@ -418,7 +418,15 @@ class QuantumSystem
 			return Edges;
 		}
 		
-		
+		/**
+		* Is used by the quantumsystem to automatically log the time by which
+		* the state was actualized.
+		*/
+		void setLastActualisation(double time)
+		{
+			LastActualisation = time;
+		}
+
 		/**
 		* returns the statenumber, i.e. the identifier of this state.
 		*/
@@ -522,6 +530,7 @@ class QuantumSystem
 			{
 				for(Edge* e: s.edges())
 					e -> update(time);
+				s.setLastActualisation(time);
 			}
 		}
 

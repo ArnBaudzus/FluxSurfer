@@ -62,6 +62,17 @@ bool thereIsJob()
 }
 
 /**
+* This Mehthod sets the variable that tells the workerthreads that there is
+* more work to come to true. It is used to start the workerthreads. This is only
+* important, when one program is running multible experiments.
+*/
+void startWork()
+{
+	std::lock_guard<std::mutex> guard(commonMutex);
+	Running = true;
+}
+
+/**
 * This Mehthode sets the variable that tells the workerthreads that there is
 * more work to come to false. It is used to stop the workerthreads so that they
 * can be joined with the management thread.
@@ -418,6 +429,7 @@ class Experiment
 	*/
 	void Conduct()
 	{
+		startWork();
 		
 		for(int i =0; i< WorkerCount;i++)
 		{
@@ -435,6 +447,8 @@ class Experiment
 			t.join();
 		}
 		
+		std::cout << std::endln;
+
 		MetaData.writeToFiles();
 	}
 };

@@ -59,7 +59,7 @@ def occupationOfLevel(pathToData,Level):
 			occupation = float(node.find(queue).text)
 			numParticlesInLevel[i] += (occupation * particlesInState)
 	
-	return numParticlesInLevel;
+	return times,numParticlesInLevel;
 
 #Wheigths the data with a quantity of the node.
 def weightedNumberOfParticles(pathToData,weightingQuantity):
@@ -100,9 +100,7 @@ def weightedNumberOfParticles(pathToData,weightingQuantity):
 			occupation = float(node.find(queue).text)
 			weightedQuantity[i] += (occupation * weight)
 	
-	return weightedQuantity;
+	return times,weightedQuantity;
 
-print(weightedNumberOfParticles("../TunnelExperimentSaves/000100_VBC=0.020000_T=1.000000.xml",
-							  "Spin"))
 
 
