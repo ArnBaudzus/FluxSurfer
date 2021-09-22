@@ -3,7 +3,7 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
-#include <json/writer.h>
+#include <jsoncpp/json/writer.h>
 
 /**
 * This is the Mutex that is used to coordinate the access on shared memory used
@@ -447,7 +447,7 @@ class Experiment
 			t.join();
 		}
 		
-		std::cout << std::endln;
+		std::cout << std::endl;
 
 		MetaData.writeToFiles();
 	}

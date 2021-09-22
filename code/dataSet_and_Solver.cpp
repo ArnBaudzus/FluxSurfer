@@ -1,6 +1,6 @@
 #include<armadillo>
 #include<vector>
-#include<json/writer.h>
+#include<jsoncpp/json/writer.h>
 #include<fstream>
 
 /**

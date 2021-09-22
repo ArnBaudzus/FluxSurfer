@@ -27,8 +27,7 @@ class Niveau
 	std::string Name;
 	
 	/**
-	* The potential Energy of the quantumobject occupying this niveau. Something
-	* like
+	* The potential Energy of the quantumobject occupying this niveau.
 	*/
 	double Energy; //in eV
 	
@@ -38,16 +37,24 @@ class Niveau
 	*/
 	double Spin;
 
+	/**
+	* Charge of the Carrier that is stored in electron charges (in units of -e).
+	* The default is 1.
+	*/
+	double Charge;
+
 	public:
 	
 	Niveau(
 		std::string name,
 		double energy,
-		double spin
+		double spin,
+		double charge = 1
 	):
 		Name(name),
 		Energy(energy),
-		Spin(spin)
+		Spin(spin),
+		Charge(charge)
 	{}
 
 	std::string name()
@@ -65,6 +72,11 @@ class Niveau
 		return Energy;
 	}
 	
+	double charge()
+	{
+		return Charge;
+	}
+
 	/**
 	* Writes the data that is held by this class as xml.
 	*/
@@ -75,6 +87,7 @@ class Niveau
 		file << indent << "\t<name> " << Name << "</name>\n";
 		file << indent << "\t<energy_in_eV> " << Energy << "</energy_in_eV>\n";
 		file << indent << "\t<Spin> " << Spin << "</Spin>\n";
+		file << indent << "\t<Charge> " << Charge << "</Charge>\n";
 		
 		file << indent << "</niveau>\n";
 	}
@@ -190,6 +203,40 @@ struct BinaryNumber
 	void setBit(int digit,bool value)
 	{
 		Number[digit] = value;
+	}
+
+	/**
+	* Returns the Number of bits that are one in the binary string that encodes
+	* thins number.
+	*/
+	int numberOfOnes()
+	{
+		int ones = 0;
+
+		for(int i =0;i<NumberOfDigits;i++)
+		{
+			if(Number[i])
+				ones++;
+		}
+
+		return ones;
+	}
+
+	/**
+	* Returns the number of bits that are zero in the binary string of this
+	* number.
+	*/
+	int numberOfZeros()
+	{
+		int zeros = 0;
+		
+		for(int i =0;i<NumberOfDigits;i++)
+		{
+			if(!Number[i])
+				zeros++;
+		}
+
+		return zeros;
 	}
 };
 
