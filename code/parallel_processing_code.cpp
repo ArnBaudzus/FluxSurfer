@@ -3,7 +3,6 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
-#include <jsoncpp/json/writer.h>
 
 /**
 * This is the Mutex that is used to coordinate the access on shared memory used

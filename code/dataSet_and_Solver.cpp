@@ -1,7 +1,8 @@
 #include<armadillo>
 #include<vector>
-#include<jsoncpp/json/writer.h>
 #include<fstream>
+#include<jsoncpp/json/writer.h> // Ubuntu
+//#include<json/writer.h> // Arch
 
 /**
 * This class defines the minimal methods and variables all Solvers should

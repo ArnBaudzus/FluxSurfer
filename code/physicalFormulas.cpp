@@ -1,9 +1,12 @@
 #pragma once
 #include<cmath>
 
+//Source: Wikipedia.com
 #define k_b 1.380649e-23
 #define e_minus 1.602176634e-19
-
+#define epsilon_0 8.8541878128e-12
+#define h_bar 1.054571817e-34
+#define m_e 9.10938356e-31
 
 /**
 * Evaluates the Fermi-Dirac-distribution for given values of E,U,T
